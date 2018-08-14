@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<!-- Defining angular app -->
+<html ng-app="RatingsApp">
+
+<head>
+  <!-- Styles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+<!-- Main angular controller -->
+<body ng-controller="MainController">
+
+  <nav class="navbar navbar-default" ng-if="$root.isLoggedIn">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Ratings app</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="main">
+  
+    <!-- Partials will be injected here -->
+    <div ng-view></div>
+    
+  </div>
+
+  <!-- DEPENDENCIES -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="controllers/mainController.js"></script>
+  <script src="controllers/loginController.js"></script>
+  <script src="controllers/homeController.js"></script>
+</body>
+
+</html>

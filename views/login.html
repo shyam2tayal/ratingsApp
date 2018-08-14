@@ -1,0 +1,34 @@
+<section class="login-section-wrap">
+  <div class="login-form-wrap pos-relative" id="login_form_wrap">
+    <h1 class="form-heading">Login</h1>
+    <div class="alert alert-danger" ng-if="error">{{error}}</div>
+    <form class="login-form material-form" id="login_form" role="form" ng-submit="login()" class="text-left" name="loginForm" novalidate>
+      <div class="form-group">
+        <input name="username" id="id_username" type="text" ng-model="model.username" class="form-control" required/>
+        <label class="float-label"><i class="fa fa-lock"></i> Username</label>
+      </div>
+      <div class="form-group">
+        <input name="password" id="id_password" type="password" ng-model="model.password" class="form-control"/>
+        <label class="float-label"><i class="fa fa-key"></i> Password</label>
+      </div>
+      <div class="form-group pos-static">
+        <button type="submit" class="btn-submit" id="submit"><img src="../img/right-arrow.png" alt=""></button>
+      </div>
+    </form>
+  </div>
+</section>
+<style type="text/css">
+  body {
+    background: url(../img/back.jpg);
+    background-size: cover;
+    background-position-y: 20%;
+  }
+
+  .content-wrapper {
+    background: transparent;
+  }
+
+  .content-page {
+    margin: 0;
+  }
+</style>

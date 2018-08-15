@@ -19,8 +19,8 @@ RatingsApp.controller('LoginController', function($scope, $location, $rootScope)
         if (loginCredentials[item]['username'] == $scope.model['username']) {
           searchIn = true;
           if (loginCredentials[item]['password'] == $scope.model['password']) {
-          	$rootScope.isLoggedIn = true;
-          	localStorage.setItem('loggedinUser', loginCredentials[item]['username']);
+            $rootScope.isLoggedIn = true;
+            localStorage.setItem('loggedinUser', loginCredentials[item]['username']);
             $location.path('/home');
             $scope.error = null;
           } else {

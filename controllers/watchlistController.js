@@ -8,6 +8,7 @@ RatingsApp.controller('WatchlistController', function($scope, $location) {
   }
   var loggedinUser = localStorage.getItem('loggedinUser');
 
+  //creating graphdata of loggedin user
   if (watchlistData[loggedinUser]) {
     $scope.myWatchlistData = watchlistData[loggedinUser];
     createGraphData();
@@ -15,6 +16,7 @@ RatingsApp.controller('WatchlistController', function($scope, $location) {
     $scope.myWatchlistData = [];
   }
 
+  //Create graphdata as count of all albumids in watchlist object array
   function createGraphData() {
     for (var item in $scope.myWatchlistData) {
       if (findIndexFromId($scope.graphData, 'albumId', $scope.myWatchlistData[item]['albumId']) > -1) {
@@ -25,6 +27,7 @@ RatingsApp.controller('WatchlistController', function($scope, $location) {
     }
   }
 
+  //utility function to find index of element from an array
   function findIndexFromId(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
       if (array[i][attr] === value) {
@@ -34,6 +37,7 @@ RatingsApp.controller('WatchlistController', function($scope, $location) {
     return -1;
   }
 
+  //amcharts data render
   var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
     "theme": "light",

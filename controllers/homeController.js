@@ -13,12 +13,15 @@ RatingsApp.controller('HomeController', function($scope, $location, $http) {
     var watchlistData = {};
   }
   var loggedinUser = localStorage.getItem('loggedinUser');
+
+  //API call to fetch all the movies data
   $http.get('https://jsonplaceholder.typicode.com/photos/').then(function(response) {
     $scope.dataLoading = false;
     $scope.moviesData = response['data'];
     $scope.getPaginatedData(1);
   })
 
+  //Create pagination object to slive item according to offset
   $scope.getPaginatedData = function(selectedPage) {
     var start = parseInt((selectedPage - 1) * $scope.paginationData.limit);
     var end = parseInt(selectedPage * $scope.paginationData.limit);
@@ -26,17 +29,18 @@ RatingsApp.controller('HomeController', function($scope, $location, $http) {
     $scope.paginatedMovies = $scope.moviesData.slice(start, end);
   }
 
+  //Function trigger when add to watch button is clicked
   $scope.add_to_watchlist = function(item) {
-  	if (watchlistData[loggedinUser]) {
-  	  watchlistData[loggedinUser].push(item);
-  	}
-  	else {
-  	  watchlistData[loggedinUser] = [item];
-  	}
-  	alert('Succesfully added to watchlist');
-  	localStorage.setItem('watchlistData', JSON.stringify(watchlistData));
+    if (watchlistData[loggedinUser]) {
+      watchlistData[loggedinUser].push(item);
+    } else {
+      watchlistData[loggedinUser] = [item];
+    }
+    alert('Succesfully added to watchlist');
+    localStorage.setItem('watchlistData', JSON.stringify(watchlistData));
   }
 
+  //Function to create a range array from start and stop point
   function getRangeArray(start, stop, step) {
     if (stop == null) {
       stop = start || 0;
@@ -53,6 +57,7 @@ RatingsApp.controller('HomeController', function($scope, $location, $http) {
     return range;
   }
 
+  //create pagination object using total items and current page
   function getPager(totalItems, currentPage, pageSize) {
     currentPage = currentPage || 1;
     pageSize = pageSize || 10;

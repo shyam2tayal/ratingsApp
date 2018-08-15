@@ -1,5 +1,43 @@
-<div class="jumbotron text-center">
-	<h1>Home Page</h1>
-	
-	<p>{{ message }}</p>
+<div class="text-center">
+  <div class="row">
+    <div class="form-group">
+      <input type="text" placeholder="Search movies" name="searchText" ng-model="searchText" class="form-control search-input no-radius search-box" />
+    </div>
+  </div>
+  <div class="item_container row">
+    <div class="cat-loading col-xs-12 center-block text-center" ng-if="dataLoading">
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i> Loading ...
+    </div>
+    <div class="item col-lg-3 col-md-4 col-xs-6" ng-repeat="item in paginatedMovies | filter : searchText">
+      <div class="product">
+        <div class="image"><img ng-src="{{item.thumbnailUrl}}" alt="" class="img-fluid image1"></div>
+        <div class="text">
+          <h3 class="h5">{{item.title}}</h3>
+        </div>
+        <span class="product-watchlist"><button class="btn btn-default add-wishlist" ng-click="add_to_watchlist(item)">Add to wishlist</button></span>
+      </div>
+    </div>
+    <p class="col-xs-12 text-center theme-color-one" ng-if="paginatedMovies.length == 0 && !dataLoading">
+      <br/>No movies to show
+    </p>
+  </div>
+  <div class="col-xs-12 pagination-wrapper text-center" ng-if="paginationData['pages'].length > 1">
+    <ul ng-if="paginationData.pages.length" class="pagination">
+      <li ng-class="{'disabled': paginationData.currentPage === 1}">
+        <a class="cursor-pointer pointer" href="javascript:void(0);" ng-click="getPaginatedData(1)"><i class="fa fa-angle-left" aria-hidden="true"></i><i class="fa fa-angle-double-left visible-xs" aria-hidden="true"></i> <span>First</span></a>
+      </li>
+      <li ng-class="{'disabled': paginationData.currentPage === 1}">
+        <a class="cursor-pointer pointer" href="javascript:void(0);" ng-click="getPaginatedData(paginationData.currentPage - 1)">Previous</a>
+      </li>
+      <li class="page-number-item-wrap" ng-repeat="page in paginationData.pages" ng-class="{'active':paginationData.currentPage === page}">
+        <a href="javascript:void(0);" class="cursor-pointer page-number-item" ng-click="getPaginatedData(page)">{{ page }}</a>
+      </li>
+      <li ng-class="{'disabled':paginationData.currentPage === paginationData.totalPages}">
+        <a class="cursor-pointer pointer" href="javascript:void(0);" ng-click="getPaginatedData(paginationData.currentPage + 1)">Next </a>
+      </li>
+      <li ng-class="{'disabled':paginationData.currentPage === paginationData.totalPages}">
+        <a class="cursor-pointer pointer" href="javascript:void(0);" ng-click="getPaginatedData(paginationData.totalPages)"><span>Last</span> <i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-angle-double-right visible-xs" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </div>
 </div>

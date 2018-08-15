@@ -19,9 +19,11 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Ratings app</a>
       </div>
+      <button class="btn btn-success pull-right logout-btn" ng-click="logout()">Logout</button>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="#/my-watchlist"><i class="fa fa-list-ul"></i> My watchlist</a></li>
       </ul>
     </div>
   </nav>
@@ -40,6 +42,10 @@
   <script src="controllers/mainController.js"></script>
   <script src="controllers/loginController.js"></script>
   <script src="controllers/homeController.js"></script>
+  <script src="controllers/watchlistController.js"></script>
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 </body>
 
 </html>

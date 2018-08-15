@@ -14,6 +14,10 @@ RatingsApp.config(function($routeProvider) {
         templateUrl: 'views/home.html',
         controller: 'HomeController'
       })
+      .when('/my-watchlist', {
+        templateUrl: 'views/watchlist.html',
+        controller: 'WatchlistController'
+      })
   })
 
   .run(function($rootScope, $location) {

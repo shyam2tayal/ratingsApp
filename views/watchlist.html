@@ -1,0 +1,20 @@
+<div class="text-center watchlist-wrapper">
+  <div class="row" ng-if="myWatchlistData.length">
+    <h4><b>You have added these movies to your watchlist</b></h4>
+  </div>
+  <div class="item_container row">
+    <div class="item col-lg-3 col-md-4 col-xs-6" ng-repeat="item in myWatchlistData">
+      <div class="product">
+        <div class="image"><img ng-src="{{item.thumbnailUrl}}" alt="" class="img-fluid image1"></div>
+        <div class="text">
+          <h3 class="h5">{{item.title}}</h3>
+        </div>
+      </div>
+    </div>
+    <p class="col-xs-12 text-center theme-color-one" ng-if="myWatchlistData.length == 0">
+      <br/>You have not added any movies to your watchlist
+    </p>
+  </div>
+  <h4 ng-if="myWatchlistData.length" class="graph-header"><b>The graph representation of your watchlist's albums vs the number of movies falling in the album is:</b></h4>
+  <div id="chartdiv"></div>
+</div>
